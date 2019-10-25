@@ -1,9 +1,18 @@
-def nyc_pigeon_organizer(data)
-  new_hash={}
-   data.each do |first_key, first_value|
+def nyc_pigeon_organizer(pigeon_data)
+ new_hash={}
+   pigeon_data.each do |key, value|
     value.each do |second_key, second_value|
-     pp second_value do |third_key, third_value|
-      
+      second_value.each do |third_key|
+        if !new_hash[third_key]
+          new_hash[third_key] = {}
+        end
+
+        if !new_hash[third_key][key]
+          new_hash[third_key][key] = []
+        end
+
+        new_hash[third_key][key] << second_key.to_s
+
       end
     end
   end
